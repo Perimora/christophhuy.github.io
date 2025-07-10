@@ -1,0 +1,44 @@
+title: Christoph Huy
+name: Christoph Huy
+description: Software Security · AI · Fuzzing · System Design
+author: Christoph Huy
+email: christoph.huy@campus.tu-berlin.de
+url: "https://christophhuy.github.io"
+baseurl: ""
+
+repository: christophhuy/christophhuy.github.io
+
+# GitHub Pages supported plugins only
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+permalink: pretty
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+# SEO and social
+social:
+  name: Christoph Huy
+  links:
+    - https://github.com/Perimora
+    - mailto:christoph.huy@campus.tu-berlin.de
+
+# Site settings
+timezone: Europe/Berlin
+lang: en
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include head.html %}
+  <body>
+    <div class="page-container">
+      <nav class="nav-bar">
+        <div class="nav-content">
+          <a href="/" class="nav-brand">
+            <span class="nav-logo">C</span>
+            <span class="nav-name">Christoph Huy</span>
+          </a>
+          <div class="nav-links">
+            <a href="/research" class="nav-link">Research</a>
+            <a href="/projects" class="nav-link">Projects</a>
+            <a href="/cv" class="nav-link">CV</a>
+            <a href="https://github.com/Perimora" target="_blank" class="nav-link external">
+              <i class="fab fa-github"></i>
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <main class="main-content">
+        {{ content }}
+      </main>
+
+      <footer class="site-footer">
+        <div class="footer-content">
+          <p>&copy; {{ 'now' | date: "%Y" }} Christoph Huy · TU Berlin</p>
+          <div class="footer-links">
+            <a href="mailto:christoph.huy@campus.tu-berlin.de" title="Email">
+              <i class="fas fa-envelope"></i>
+            </a>
+            <a href="https://github.com/Perimora" target="_blank" title="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Smooth scrolling and animations -->
+    <script>
+      // Add scroll-based animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+          }
+        });
+      }, observerOptions);
+
+      // Observe all sections
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('section, .project-card, .skill-tag').forEach(el => {
+          observer.observe(el);
+        });
+
+        // Add typing animation to hero text
+        const heroSubtitle = document.querySelector('.hero-subtitle');
+        if (heroSubtitle) {
+          const text = heroSubtitle.textContent;
+          heroSubtitle.textContent = '';
+          heroSubtitle.style.opacity = '1';
+          
+          let i = 0;
+          const typeWriter = () => {
+            if (i < text.length) {
+              heroSubtitle.textContent += text.charAt(i);
+              i++;
+              setTimeout(typeWriter, 50);
+            }
+          };
+          
+          setTimeout(typeWriter, 1000);
+        }
+      });
+    </script>
+  </body>
+</html>

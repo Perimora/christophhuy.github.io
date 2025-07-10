@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include head.html %}
+  <body class="home-page">
+    {{ content }}
+
+    <!-- Smooth scrolling and animations -->
+    <script>
+      // Add scroll-based animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+          }
+        });
+      }, observerOptions);
+
+      // Observe all sections
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('section, .project-card, .skill-tag').forEach(el => {
+          observer.observe(el);
+        });
+
+        // Add typing animation to hero text
+        const heroSubtitle = document.querySelector('.hero-subtitle');
+        if (heroSubtitle) {
+          const text = heroSubtitle.textContent;
+          heroSubtitle.textContent = '';
+          heroSubtitle.style.opacity = '1';
+          
+          let i = 0;
+          const typeWriter = () => {
+            if (i < text.length) {
+              heroSubtitle.textContent += text.charAt(i);
+              i++;
+              setTimeout(typeWriter, 50);
+            }
+          };
+          
+          setTimeout(typeWriter, 1000);
+        }
+
+        // Force project cards to be visible immediately for home page
+        setTimeout(() => {
+          document.querySelectorAll('.project-card').forEach(card => {
+            card.classList.add('animate-in');
+          });
+        }, 500);
+      });
+    </script>
+  </body>
+</html>
