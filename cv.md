@@ -19,7 +19,7 @@ title: CV
         Full academic background, publications, skills, and project experience
       </p>
     </div>
-    <a href="./assets/cv.pdf" target="_blank" class="btn" style="margin-left: auto; background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.3);">
+    <a href="/assets/cv.pdf" target="_blank" class="btn" style="margin-left: auto; background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.3);">
       <i class="fas fa-download"></i>
       Download PDF
     </a>
